@@ -1,0 +1,7 @@
+FROM golang:1.8.3 as builder
+COPY main.go ./
+RUN go-wrapper install
+
+FROM scratch
+COPY --from=builder /go/bin/hello-world /hello-world
+CMD ["/hello-world"]
