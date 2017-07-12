@@ -2,6 +2,7 @@ FROM golang:1.8.3 as builder
 WORKDIR /go/src/https-get
 COPY main.go ./
 RUN CGO_ENABLED=0 go install -a -tags netgo -ldflags '-extldflags "-static"'
+RUN ldd /go/bin/https-get | grep -q "not a dynamic executable"
 
 FROM scratch
 COPY --from=builder /go/bin/https-get /https-get

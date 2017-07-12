@@ -1,6 +1,6 @@
 FROM golang:1.8.3
 WORKDIR /go/src/https-get
 COPY main.go ./
-RUN CGO_ENABLED=0 go install -a -tags netgo -ldflags '-extldflags "-static"'
+RUN go install
 RUN ldd /go/bin/https-get | grep -q "not a dynamic executable"
 CMD ["https-get"]
