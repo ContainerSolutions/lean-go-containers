@@ -1,4 +1,4 @@
-package main // import "github.com/ContainerSolutions/lean-go-containers/hello-world"
+package main
 
 import "fmt"
 

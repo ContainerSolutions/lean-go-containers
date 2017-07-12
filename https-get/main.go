@@ -1,4 +1,4 @@
-package main // import "github.com/ContainerSolutions/lean-go-containers/https-get"
+package main
 
 import (
   "io"
