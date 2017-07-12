@@ -1,4 +1,5 @@
 FROM golang:1.8.3
-COPY main.go ./
-RUN go-wrapper install
-CMD ["go-wrapper", "run"]
+WORKDIR /go/src/hello-world
+COPY main.go /go/src/hello-world
+RUN go install
+CMD ["hello-world"]

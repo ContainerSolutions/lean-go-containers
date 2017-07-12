@@ -1,6 +1,7 @@
 FROM golang:1.8.3 as builder
+WORKDIR /go/src/https-get
 COPY main.go ./
-RUN CGO_ENABLED=0 GOOS=linux go build -a -ldflags '-extldflags "-static"' -o /go/bin/https-get .
+RUN CGO_ENABLED=0 go install -a -tags netgo -ldflags '-extldflags "-static"'
 
 FROM scratch
 COPY --from=builder /go/bin/https-get /https-get
